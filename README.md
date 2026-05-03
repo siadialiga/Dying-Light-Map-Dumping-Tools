@@ -13,7 +13,7 @@ Before using these tools, make sure you have the following installed on your com
 2. .NET 8.0 SDK
 3. 7-Zip (installed in the default directory)
 
-## Setup
+## Build
 
 First, you need to compile the conversion tools. Open your terminal or command prompt in the project folder and run:
 
@@ -23,18 +23,21 @@ dotnet build MapTools.sln
 
 This will create the necessary executable files in the `SoDumper` and `Map2EDS` folders.
 
+Then you can run the automation script: `python AutoMapDumper.py` to dump the maps.
+
 ## How to Use
 
 The process is largely automated through the `AutoMapDumper.py` script.
 
-1. Open your terminal in the project folder.
-2. Run the automation script:
+1. Download the latest release from the [Releases](https://github.com/siadialiga/Dying-Light-Map-Dumping-Tools/releases) page.
+2. Open your terminal in the `DLMDT_Release` folder.
+3. Run the automation script:
    ```bash
    python AutoMapDumper.py
    ```
-3. The script will look for your `Data2.pak` file (usually found in your Steam installation). If it is in a different location, you can provide the path manually.
-4. It will scan the game files and show you a list of available maps. Enter the number of the map you want to dump.
-5. The script will extract the map, convert it, and save the final `.eds` file in a folder named `DumpedMaps`.
+4. The script will look for your `Data2.pak` file (usually found in your Steam installation). If it is in a different location, you can provide the path manually.
+5. It will scan the game files and show you a list of available maps. Enter the number of the map you want to dump.
+6. The script will extract the map, convert it, and save the final `.eds` file in a folder named `DumpedMaps`.
 
 ## Final Manual Steps in Developer Tools
 
