@@ -1,0 +1,10 @@
+*.vs
+x64/
+Debug
+packages
+/Map2EDS/bin
+/Map2EDS/obj
+/SoDumper/bin
+/SoDumper/obj
+/SO_Dumper/obj
+/SO_Dumper/bin
