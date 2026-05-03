@@ -1,4 +1,4 @@
-# Dying Light Map Dumping Tools
+# Dying Light Map Dumping Tools (DLMDT)
 
 This project is designed to help you open and edit the original maps from Dying Light using the official Dying Light Developer Tools. 
 

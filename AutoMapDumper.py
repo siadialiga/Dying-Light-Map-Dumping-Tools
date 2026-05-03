@@ -129,16 +129,28 @@ def main():
     txt_path = os.path.join(output_dir, f"{map_name_no_ext}.txt")
     eds_path = os.path.join(output_dir, f"{map_name_no_ext}.eds")
 
-    # Locate the compiled binaries for the tools
-    dumper_exe = os.path.join(os.getcwd(), "SoDumper", "bin", "Debug", "net8.0", "SO18_Dumper.exe")
-    map2eds_exe = os.path.join(os.getcwd(), "Map2EDS", "bin", "Debug", "net8.0", "Map2EDS.exe")
+    # Define potential locations for the compiled binaries
+    possible_dumper_paths = [
+        os.path.join(os.getcwd(), "tools", "SO18_Dumper", "SO18_Dumper.exe"),
+        os.path.join(os.getcwd(), "SoDumper", "bin", "Debug", "net8.0", "SO18_Dumper.exe"),
+        os.path.join(os.getcwd(), "SoDumper", "bin", "Release", "net8.0", "win-x64", "publish", "SO18_Dumper.exe")
+    ]
+    
+    possible_map2eds_paths = [
+        os.path.join(os.getcwd(), "tools", "Map2EDS", "Map2EDS.exe"),
+        os.path.join(os.getcwd(), "Map2EDS", "bin", "Debug", "net8.0", "Map2EDS.exe"),
+        os.path.join(os.getcwd(), "Map2EDS", "bin", "Release", "net8.0", "win-x64", "publish", "Map2EDS.exe")
+    ]
 
-    if not os.path.exists(dumper_exe):
-        print("ERROR: SO18_Dumper.exe not found. Please ensure the project is built (dotnet build MapTools.sln).")
+    dumper_exe = next((p for p in possible_dumper_paths if os.path.exists(p)), None)
+    map2eds_exe = next((p for p in possible_map2eds_paths if os.path.exists(p)), None)
+
+    if not dumper_exe:
+        print("ERROR: SO18_Dumper.exe not found. Please ensure the tools are available in the 'tools' folder.")
         return
     
-    if not os.path.exists(map2eds_exe):
-        print("ERROR: Map2EDS.exe not found. Please ensure the project is built.")
+    if not map2eds_exe:
+        print("ERROR: Map2EDS.exe not found. Please ensure the tools are available in the 'tools' folder.")
         return
 
     print("\nStep 1: Running SO18_Dumper...")
